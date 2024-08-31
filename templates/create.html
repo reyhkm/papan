@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="mt-5">
+    <h2>Buat Papan Inspirasi Baru</h2>
+    <form method="POST">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nama Papan</label>
+            <input type="text" class="form-control" id="name" name="name" required>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Deskripsi Papan</label>
+            <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="public" name="public" checked>
+            <label class="form-check-label" for="public">Public (terlihat oleh semua orang)</label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Buat Papan</button>
+    </form>
+</div>
+{% endblock %}

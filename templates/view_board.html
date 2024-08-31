@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="mt-5">
+    <h2>{{ board.name }}</h2>
+    <p>{{ board.description }}</p>
+    <hr>
+    <div class="mt-4">
+        <h4>Inspirasi di Papan Ini:</h4>
+        {% if board.items %}
+        <div class="row">
+            {% for item in board.items %}
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    {% if item.image_url %}
+                    <img src="{{ item.image_url }}" class="card-img-top" alt="Gambar Inspirasi">
+                    {% endif %}
+                    <div class="card-body">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.content }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <p>Belum ada inspirasi yang ditambahkan ke papan ini.</p>
+        {% endif %}
+    </div>
+    <div class="mt-5">
+        <h4>Tambahkan Inspirasi Baru</h4>
+        <form method="POST" action="{{ url_for('add_item', board_id=board.id) }}" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="title" class="form-label">Judul Inspirasi</label>
+                <input type="text" class="form-control" id="title" name="title" required>
+            </div>
+            <div class="mb-3">
+                <label for="content" class="form-label">Konten Inspirasi</label>
+                <textarea class="form-control" id="content" name="content" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Unggah Gambar (opsional)</label>
+                <input type="file" class="form-control" id="image" name="image">
+            </div>
+            <button type="submit" class="btn btn-primary">Tambahkan Inspirasi</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

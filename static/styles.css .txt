@@ -1,0 +1,8 @@
+/* styles.css */
+.btn-custom {
+    color: white;
+    background-color: #28a745; /* Warna latar belakang hijau */
+}
+.btn-custom:hover {
+    background-color: #218838; /* Warna latar belakang hijau lebih gelap saat hover */
+}
